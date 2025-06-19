@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Floor Opening</title>
+
+    <style>
+        .container {
+            text-align: center;
+            padding: 10%;
+        }
+
+        /* Common Properties */
+        .floor-opening,
+        .opening,
+        .isometric-cube,
+        .isometric-cube-right,
+        .isometric-cube-left {
+            position: absolute;
+        }
+
+        /* Floor Opening */
+        .floor-opening {
+            top: 461px;
+            left: 244px;
+            transform: rotate(210deg) skewX(-30deg) scaleY(0.864);
+        }
+
+        .opening {
+            width: 190px;
+            height: 190px;
+            background: #043468;
+            animation: open-close 5.5s ease-in-out infinite;
+        }
+
+        @keyframes open-close {
+            from {
+                scale: 1 1;
+            }
+
+            10% {
+                scale: 1 1;
+            }
+
+            15% {
+                scale: 1 0;
+            }
+
+            80% {
+                scale: 1 0;
+            }
+
+            81% {
+                scale: 1 1;
+            }
+
+            to {
+                scale: 1 1;
+            }
+        }
+
+        /* Isometric Cube */
+        .isometric-cube {
+            top: 343px;
+            left: 244px;
+            animation: cube 5.5s ease-in infinite;
+        }
+
+        @keyframes cube {
+            from {
+                translate: 0 50px;
+                opacity: 0;
+            }
+
+            8% {
+                translate: 0 50px;
+                opacity: 0;
+            }
+
+            10% {
+                translate: 0 -160px;
+                opacity: 1;
+            }
+
+            15% {
+                translate: 0 -160px;
+            }
+
+            20% {
+                translate: 0 0;
+            }
+
+            30% {
+                translate: 0 -65px;
+            }
+
+            40% {
+                translate: 0 0;
+            }
+
+            50% {
+                translate: 0 0;
+            }
+
+            60% {
+                translate: 0 -200px;
+                opacity: 1;
+            }
+
+            94% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Isometric Cube Parts */
+        .isometric-cube-top {
+            width: 100px;
+            height: 100px;
+            background: #085bb5;
+            transform-origin: 0 0;
+            transform: rotate(210deg) skewX(-30deg) scaleY(0.864);
+        }
+
+        .isometric-cube-right {
+            height: 100px;
+            width: 100px;
+            background: #043468;
+            transform-origin: 0 0;
+            transform: rotate(-30deg) skewX(-30deg) translate(0, -87px) scaleY(0.864);
+        }
+
+        .isometric-cube-left {
+            width: 100px;
+            height: 100px;
+            transform-origin: 0 0;
+            background: #4fa0f8;
+            transform: rotate(90deg) skewX(-30deg) scaleY(0.864) translate(-100.5px, 0);
+        }
+
+        /* Light */
+        .light {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            top: 30px;
+            left: 30px;
+            background: #f99f3e;
+            border-radius: 50%;
+            animation: light-flash 5.5s ease-in infinite;
+        }
+
+        @keyframes light-flash {
+            from {
+                background: #085bb5;
+                box-shadow: none;
+            }
+
+            12% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+
+            24% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+
+            36% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+
+            48% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+
+            60% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+
+            72% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+
+            84% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+
+            92% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+
+            to {}
+        }
+
+        /* Body and Container Settings */
+        /* Center shapes */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Set background and border color */
+        .container {
+            min-width: 500px;
+            height: 500px;
+            border: 5px solid lightgray;
+            background: white;
+            position: relative;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        pre {
+            background-color: #1e1e1e;
+            /* VSCode dark background */
+            color: #d4d4d4;
+            /* VSCode default text */
+            font-family: 'Fira Code', 'Courier New', monospace;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            border: 1px solid #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            white-space: pre-wrap;
+            /* break long lines nicely */
+        }
+
+        /* Optional: Add subtle colors to mimic syntax (basic) */
+        pre .tag {
+            color: #569cd6;
+        }
+
+        pre .attr {
+            color: #9cdcfe;
+        }
+
+        pre .val {
+            color: #ce9178;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="floor-opening">
+            <div class="opening"></div>
+        </div>
+        <div class="isometric-cube">
+            <div class="isometric-cube-top">
+                <div class="light"></div>
+            </div>
+            <div class="isometric-cube-right"></div>
+            <div class="isometric-cube-left"></div>
+        </div>
+    </div>
+
+
+    <pre>
+           <pre>
+            &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"floor-opening"</span>&gt;
+                &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"opening"</span>&gt;&lt;/<span class="tag">div</span>&gt;
+            &lt;/<span class="tag">div</span>&gt;
+
+            &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"isometric-cube"</span>&gt;
+                &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"isometric-cube-top"</span>&gt;
+                    &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"light"</span>&gt;&lt;/<span class="tag">div</span>&gt;
+                &lt;/<span class="tag">div</span>&gt;
+                &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"isometric-cube-right"</span>&gt;&lt;/<span class="tag">div</span>&gt;
+                &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"isometric-cube-left"</span>&gt;&lt;/<span class="tag">div</span>&gt;
+            &lt;/<span class="tag">div</span>&gt;
+            </pre>
+
+    <pre>
+            &lt;style&gt;
+           /* Common Properties */
+            .floor-opening,
+            .opening,
+            .isometric-cube,
+            .isometric-cube-right,
+            .isometric-cube-left {
+            position: absolute;
+            }
+
+            /* Floor Opening */
+            .floor-opening {
+            top: 461px;
+            left: 244px;
+            transform: rotate(210deg) skewX(-30deg) scaleY(0.864);
+            }
+
+            .opening {
+            width: 190px;
+            height: 190px;
+            background: #043468;
+            animation: open-close 5.5s ease-in-out infinite;
+            }
+
+            @keyframes open-close {
+            from {
+                scale: 1 1;
+            }
+            10% {
+                scale: 1 1;
+            }
+            15% {
+                scale: 1 0;
+            }
+            80% {
+                scale: 1 0;
+            }
+            81% {
+                scale: 1 1;
+            }
+            to {
+                scale: 1 1;
+            }
+            }
+
+            /* Isometric Cube */
+            .isometric-cube {
+            top: 343px;
+            left: 244px;
+            animation: cube 5.5s ease-in infinite;
+            }
+
+            @keyframes cube {
+            from {
+                translate: 0 50px;
+                opacity: 0;
+            }
+            8% {
+                translate: 0 50px;
+                opacity: 0;
+            }
+            10% {
+                translate: 0 -160px;
+                opacity: 1;
+            }
+            15% {
+                translate: 0 -160px;
+            }
+            20% {
+                translate: 0 0;
+            }
+            30% {
+                translate: 0 -65px;
+            }
+            40% {
+                translate: 0 0;
+            }
+            50% {
+                translate: 0 0;
+            }
+            60% {
+                translate: 0 -200px;
+                opacity: 1;
+            }
+            94% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 0;
+            }
+            to {
+                opacity: 0;
+            }
+            }
+
+            /* Isometric Cube Parts */
+            .isometric-cube-top {
+            width: 100px;
+            height: 100px;
+            background: #085bb5;
+            transform-origin: 0 0;
+            transform: rotate(210deg) skewX(-30deg) scaleY(0.864);
+            }
+
+            .isometric-cube-right {
+            height: 100px;
+            width: 100px;
+            background: #043468;
+            transform-origin: 0 0;
+            transform: rotate(-30deg) skewX(-30deg) translate(0, -87px) scaleY(0.864);
+            }
+
+            .isometric-cube-left {
+            width: 100px;
+            height: 100px;
+            transform-origin: 0 0;
+            background: #4fa0f8;
+            transform: rotate(90deg) skewX(-30deg) scaleY(0.864) translate(-100.5px, 0);
+            }
+
+            /* Light */
+            .light {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            top: 30px;
+            left: 30px;
+            background: #f99f3e;
+            border-radius: 50%;
+            animation: light-flash 5.5s ease-in infinite;
+            }
+
+            @keyframes light-flash {
+            from {
+                background: #085bb5;
+                box-shadow: none;
+            }
+            12% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+            24% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+            36% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+            48% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+            60% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+            72% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+            84% {
+                background: #f99f3e;
+                box-shadow: 2px 2px 10px #cef5ff, -2px -2px 20px #6fdaff;
+            }
+            92% {
+                background: #085bb5;
+                box-shadow: none;
+            }
+            to {
+            }
+            }
+
+            /* Body and Container Settings */
+            /* Center shapes */
+            body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            }
+
+            /* Set background and border color */
+            .container {
+            min-width: 500px;
+            height: 500px;
+            border: 5px solid lightgray;
+            background: white;
+            position: relative;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+            &lt;/style&gt;
+            </pre>
+    </pre>
+
+
+</body>
+
+</html>

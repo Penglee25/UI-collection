@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bounce Animation</title>
+    <link rel="stylesheet" href="../styles/bounce.css">
+
+    <style>
+        .container {
+            text-align: center;
+            padding: 10%;
+        }
+
+        .bounce {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #4ade80;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            /* VSCode dark background */
+            color: #d4d4d4;
+            /* VSCode default text */
+            font-family: 'Fira Code', 'Courier New', monospace;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            border: 1px solid #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            white-space: pre-wrap;
+            /* break long lines nicely */
+        }
+
+        /* Optional: Add subtle colors to mimic syntax (basic) */
+        pre .tag {
+            color: #569cd6;
+        }
+
+        pre .attr {
+            color: #9cdcfe;
+        }
+
+        pre .val {
+            color: #ce9178;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bounce">Bounce Me!</div>
+    </div>
+
+
+    <pre>
+            &lt;div class="bounce"&gt;Bounce Me!&lt;/div&gt;
+
+            &lt;style&gt;
+            .bounce {
+            animation: bounce 2s infinite;
+            }
+            @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            }
+            &lt;/style&gt;
+        </pre>
+
+
+</body>
+
+</html>
