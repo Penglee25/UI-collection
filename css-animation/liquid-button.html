@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Liquid button</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .liquid-button {
+            position: relative;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            background: none;
+            color: #7209b7;
+            border: 2px solid #7209b7;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 1;
+            min-width: 160px;
+        }
+
+        .liquid-button:focus {
+            outline: none;
+        }
+
+        .button-text {
+            position: relative;
+            z-index: 3;
+            transition: all 0.4s ease;
+        }
+
+        .button-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+        }
+
+        .button-icon {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%) scale(0);
+            width: 20px;
+            height: 20px;
+            z-index: 3;
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+
+        .liquid-button:hover {
+            color: white;
+            padding-right: 45px;
+            box-shadow: 0 6px 16px rgba(114, 9, 183, 0.3);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .liquid-button:hover .button-decoration {
+            background: linear-gradient(135deg, #7209b7, #3a0ca3);
+        }
+
+        .liquid-button:hover .button-icon {
+            transform: translateY(-50%) scale(1);
+            opacity: 1;
+        }
+
+        .button-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .liquid-button:hover .particle:nth-child(1) {
+            animation: particle-animation 0.8s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 30%;
+            top: 20%;
+        }
+
+        .liquid-button:hover .particle:nth-child(2) {
+            animation: particle-animation 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 60%;
+            top: 10%;
+        }
+
+        .liquid-button:hover .particle:nth-child(3) {
+            animation: particle-animation 0.8s 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 20%;
+            top: 60%;
+        }
+
+        .liquid-button:hover .particle:nth-child(4) {
+            animation: particle-animation 0.8s 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 70%;
+            top: 70%;
+        }
+
+        .liquid-button:hover .particle:nth-child(5) {
+            animation: particle-animation 0.8s 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 30%;
+            top: 80%;
+        }
+
+        .liquid-button:hover .particle:nth-child(6) {
+            animation: particle-animation 0.8s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 50%;
+            top: 30%;
+        }
+
+        .liquid-button:hover .particle:nth-child(7) {
+            animation: particle-animation 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 80%;
+            top: 40%;
+        }
+
+        .liquid-button:hover .particle:nth-child(8) {
+            animation: particle-animation 0.8s 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            left: 15%;
+            top: 40%;
+        }
+
+        @keyframes particle-animation {
+            0% {
+                opacity: 0;
+                transform: scale(0) translate(0, 0);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(3) translate(20px, -20px);
+            }
+        }
+
+        .liquid-button:active {
+            transform: scale(0.97) translateY(-1px);
+            box-shadow: 0 3px 8px rgba(114, 9, 183, 0.2);
+        }
+
+         pre {
+            background-color: #1e1e1e;
+            /* VSCode dark background */
+            color: #d4d4d4;
+            /* VSCode default text */
+            font-family: 'Fira Code', 'Courier New', monospace;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            border: 1px solid #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            white-space: pre-wrap;
+            /* break long lines nicely */
+        }
+
+        /* Optional: Add subtle colors to mimic syntax (basic) */
+        pre .tag {
+            color: #569cd6;
+        }
+
+        pre .attr {
+            color: #9cdcfe;
+        }
+
+        pre .val {
+            color: #ce9178;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="liquid-button">
+            <span class="button-text">Subscribe</span>
+            <span class="button-decoration"></span>
+            <svg class="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="button-particles">
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+            </div>
+        </button>
+    </div>
+
+
+    <pre>
+           <pre>
+&lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"container"</span>&gt;
+    &lt;<span class="tag">button</span> <span class="attr">class</span>=<span class="val">"liquid-button"</span>&gt;
+        &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"button-text"</span>&gt;Subscribe&lt;/<span class="tag">span</span>&gt;
+        &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"button-decoration"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+        &lt;<span class="tag">svg</span> <span class="attr">class</span>=<span class="val">"button-icon"</span>
+             <span class="attr">xmlns</span>=<span class="val">"http://www.w3.org/2000/svg"</span>
+             <span class="attr">viewBox</span>=<span class="val">"0 0 24 24"</span>
+             <span class="attr">width</span>=<span class="val">"24"</span>
+             <span class="attr">height</span>=<span class="val">"24"</span>
+             <span class="attr">fill</span>=<span class="val">"none"</span>
+             <span class="attr">stroke</span>=<span class="val">"currentColor"</span>
+             <span class="attr">stroke-width</span>=<span class="val">"2"</span>
+             <span class="attr">stroke-linecap</span>=<span class="val">"round"</span>
+             <span class="attr">stroke-linejoin</span>=<span class="val">"round"</span>&gt;
+            &lt;<span class="tag">polyline</span> <span class="attr">points</span>=<span class="val">"20 6 9 17 4 12"</span>&gt;&lt;/<span class="tag">polyline</span>&gt;
+        &lt;/<span class="tag">svg</span>&gt;
+        &lt;<span class="tag">div</span> <span class="attr">class</span>=<span class="val">"button-particles"</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+            &lt;<span class="tag">span</span> <span class="attr">class</span>=<span class="val">"particle"</span>&gt;&lt;/<span class="tag">span</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    &lt;/<span class="tag">button</span>&gt;
+&lt;/<span class="tag">div</span>&gt;
+</pre>
+
+
+    <pre>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.liquid-button {
+    position: relative;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: none;
+    color: #7209b7;
+    border: 2px solid #7209b7;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 1;
+    min-width: 160px;
+}
+
+.liquid-button:focus {
+    outline: none;
+}
+
+.button-text {
+    position: relative;
+    z-index: 3;
+    transition: all 0.4s ease;
+}
+
+.button-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+}
+
+.button-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%) scale(0);
+    width: 20px;
+    height: 20px;
+    z-index: 3;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.liquid-button:hover {
+    color: white;
+    padding-right: 45px;
+    box-shadow: 0 6px 16px rgba(114, 9, 183, 0.3);
+    border-color: transparent;
+    transform: translateY(-3px);
+}
+
+.liquid-button:hover .button-decoration {
+    background: linear-gradient(135deg, #7209b7, #3a0ca3);
+}
+
+.liquid-button:hover .button-icon {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+}
+
+.button-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.liquid-button:hover .particle:nth-child(1) {
+    animation: particle-animation 0.8s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 30%;
+    top: 20%;
+}
+
+.liquid-button:hover .particle:nth-child(2) {
+    animation: particle-animation 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 60%;
+    top: 10%;
+}
+
+.liquid-button:hover .particle:nth-child(3) {
+    animation: particle-animation 0.8s 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 20%;
+    top: 60%;
+}
+
+.liquid-button:hover .particle:nth-child(4) {
+    animation: particle-animation 0.8s 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 70%;
+    top: 70%;
+}
+
+.liquid-button:hover .particle:nth-child(5) {
+    animation: particle-animation 0.8s 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 30%;
+    top: 80%;
+}
+
+.liquid-button:hover .particle:nth-child(6) {
+    animation: particle-animation 0.8s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 50%;
+    top: 30%;
+}
+
+.liquid-button:hover .particle:nth-child(7) {
+    animation: particle-animation 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 80%;
+    top: 40%;
+}
+
+.liquid-button:hover .particle:nth-child(8) {
+    animation: particle-animation 0.8s 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 15%;
+    top: 40%;
+}
+
+@keyframes particle-animation {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3) translate(20px, -20px);
+    }
+}
+
+.liquid-button:active {
+    transform: scale(0.97) translateY(-1px);
+    box-shadow: 0 3px 8px rgba(114, 9, 183, 0.2);
+}
+</pre>
+
+    </pre>
+
+
+</body>
+
+</html>
