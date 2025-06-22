@@ -2,21 +2,34 @@
 <html>
 <head>
 <style> 
-div {
+.expand-width {
   width: 100px;
   height: 100px;
   background: red;
   transition: width 2s;
 }
 
-div:hover {
+.expand-width:hover {
   width: 300px;
+}
+
+.expand-height {
+margin-top: 15%;
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 2s, height 4s;
+}
+
+.expand-height:hover {
+  width: 300px;
+  height: 300px;
 }
 </style>
 </head>
 <body>
-<div></div>
-
+<div class="expand-width"></div>
+<div class="expand-height"></div>
 </body>
 </html>
 
